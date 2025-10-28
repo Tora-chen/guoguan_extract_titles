@@ -12,21 +12,8 @@ dependencies = [
     "pymupdf>=1.26.5",
 ]
 
-[[index]]
+[[tool.uv.index]]
 url = "https://pypi.tuna.tsinghua.edu.cn/simple"
 default = true
 
-[dependency-groups]
-dev = [
-    "pyrefly==0.38.0",
-]
 
-
-[tool.pyrefly]
-project-includes = ["**/*.py*"]
-project-excludes = [
-    "**/node_modules",
-    "**/__pycache__",
-    "**/*venv/**/*",
-    "**/.[!/.]*/**/*",
-]

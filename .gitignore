@@ -10,3 +10,5 @@ wheels/
 .venv
 
 temp
+
+test_book_pdf
