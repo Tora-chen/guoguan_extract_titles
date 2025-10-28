@@ -25,7 +25,7 @@ def process_page(pdf_path: str | Path, page_num: int):
         return img_bytes
 
 
-def pdf_to_image(pdf_path):
+def pdf_to_image(pdf_path: str | Path):
     with fitz.open(pdf_path) as doc:
         page_count = len(doc)
 

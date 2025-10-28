@@ -1,6 +1,5 @@
 import io
 
-import torch  # noqa: F401
 from doclayout_yolo import YOLOv10
 from doclayout_yolo.engine.results import Results
 from PIL import Image
@@ -8,12 +7,10 @@ from PIL import Image
 from core.timer import Timer
 
 DEVICE = "cuda:0"  # "cpu" or "cuda:0" or "npu:0"
-BATCH_SIZE = 10  # 随显存增大可适当增大，一张910B可调至40以上
+BATCH_SIZE = 10  # 随显存增大可适当增大
 
 if DEVICE.startswith("npu"):
-    import torch_npu  # noqa: F401
-    from torch_npu.contrib import transfer_to_npu  # noqa: F401
-
+    pass
 
 model = YOLOv10("core/doclayout_yolo_docstructbench_imgsz1024.pt")
 FloatBBox = tuple[float, float, float, float]  # x0, y0, x1, y1
