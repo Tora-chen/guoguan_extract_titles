@@ -1,0 +1,32 @@
+[project]
+name = "guoguan-extract-titles"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = "~=3.10.0"
+dependencies = [
+    "doclayout-yolo>=0.0.4",
+    "huggingface-hub>=0.36.0",
+    "joblib>=1.5.2",
+    "openai>=2.6.1",
+    "pymupdf>=1.26.5",
+]
+
+[[index]]
+url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+default = true
+
+[dependency-groups]
+dev = [
+    "pyrefly==0.38.0",
+]
+
+
+[tool.pyrefly]
+project-includes = ["**/*.py*"]
+project-excludes = [
+    "**/node_modules",
+    "**/__pycache__",
+    "**/*venv/**/*",
+    "**/.[!/.]*/**/*",
+]
