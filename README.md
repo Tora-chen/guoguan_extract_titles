@@ -1,6 +1,6 @@
 1   拉取仓库
 ```
-git clone ....
+git clone https://github.com/Tora-chen/guoguan_extract_titles.git
 cd guoguan_extract_titles
 ```
 
@@ -17,6 +17,7 @@ uv sync
 uv pip install torch -U --torch-backend=auto
 ```
 
+验证 cuda 是否可用
 ```
 uv run python
 
