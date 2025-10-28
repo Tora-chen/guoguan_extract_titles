@@ -41,9 +41,12 @@ class VLMTextExtractor(TextExtractor):
     使用 OpenAI API 和 joblib 进行并行处理。
     """
 
-    def __init__(self, client: OpenAI, model: str = "qwen-vl-plus", n_jobs: int = -1):
-        self.client = client
-        self.model = model
+    def __init__(self, n_jobs: int = -1):
+        self.client = OpenAI(
+            base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
+            api_key="sk-xxxxxxxxxxxx",
+        )
+        self.model = "qwen-vl-max"
         self.n_jobs = n_jobs
         self.prompt = "你是一个 OCR 模型。提取图中文字。不要输出任何额外字符。"
 
@@ -101,12 +104,6 @@ if __name__ == "__main__":
     from core._3_crop_titles import crop_titles
     from core.timer import Timer
 
-    # 初始化 OpenAI 客户端
-    client = OpenAI(
-        base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
-        api_key="sk-0cb46f17675443d583cce0470d4d93df",
-    )
-
     with Timer():
         images = pdf_to_image("test_book_pdf/7301098332霸权之翼：美国国际制度战略.pdf")
         images = images[:50]
@@ -120,7 +117,7 @@ if __name__ == "__main__":
         cropped_indexes = [pair[0] for pair in cropped_pairs]
 
     with Timer():
-        vlm_extractor = VLMTextExtractor(client=client, model="qwen-vl-max")
+        vlm_extractor = VLMTextExtractor()
         titles = vlm_extractor.extract_from_batch(cropped_images)
 
     for i, title in enumerate(titles):

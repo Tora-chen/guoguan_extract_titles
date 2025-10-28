@@ -7,7 +7,7 @@ from PIL import Image
 from core.timer import Timer
 
 DEVICE = "cuda:0"  # "cpu" or "cuda:0" or "npu:0"
-BATCH_SIZE = 10  # 随显存增大可适当增大
+BATCH_SIZE = 15  # 随显存增大可适当增大
 
 if DEVICE.startswith("npu"):
     pass
